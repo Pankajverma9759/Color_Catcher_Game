@@ -1,0 +1,481 @@
+ body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    #btn{
+        font-size: 18px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        margin: 5px;
+        cursor: pointer;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+    }
+
+    #mode {
+      margin-bottom: 20px;
+    }
+
+    #dark, #light {
+      font-size: 18px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      margin: 5px;
+      cursor: pointer;
+    }
+
+    #dark {
+      background-color: black;
+      color: white;
+      border: 2px solid white;
+    }
+
+    #light {
+      background-color: white;
+      color: black;
+      border: 2px solid black;
+    }
+
+    /* Light Mode */
+    body.light-mode {
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    .game-container {
+      /* padding: 20px; */
+      border-radius: 12px;
+      max-width: 900px;
+      margin: auto;
+      transition: background-color 0.3s, color 0.3s;
+      min-height: 74vh;    
+    }
+
+    body.light-mode .game-container {
+      background-color: #f9f9f9;
+      border: 2px solid black;
+    }
+
+    body.dark-mode .game-container {
+      background-color: #222;
+      border: 2px solid white;
+    }
+
+    /* Responsive grid */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+      gap: 10px;
+      justify-content: center;
+      margin: 20px auto;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    /* Perfect square color boxes */
+    .color-box {
+      width: 100%;
+      padding-top: 100%; /* square */
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+
+    .color-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    }
+
+    #target-color {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: crimson;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .game-container {
+        max-width: 95%;
+        padding: 15px;
+      }
+
+      #dark, #light {
+        font-size: 16px;
+        padding: 8px 16px;
+      }
+
+      .color-grid {
+        gap: 8px;
+      }
+    }
+
+   @media (max-width: 480px) {
+    .game-container .btn-group {
+        /* font-size: 1rem; */
+        margin-top: 45px 0;
+    }
+}
+
+      #dark, #light {
+        font-size: 14px;
+        padding: 6px 12px;
+      }
+
+      .color-grid {
+        gap: 6px;
+      }
+
+
+@media (max-width: 480px) {
+  .game-container {
+    min-height: 85vh;   /* mobile full screen height */
+    padding: 10px;
+    justify-content: flex-start; /* top se shuru ho UX ke liye */
+  }
+  
+  .game-container h1 {
+    font-size: 1.4rem;
+    margin: 10px 0;
+  }
+
+  .game-container p {
+    font-size: 1rem;
+    margin: 6px 0;
+  }
+
+  .game-container button {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+  .game-container .btn-group{
+    margin-top: 45px 0;
+  }
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px; /* default desktop/tablet */
+  width: 100%;
+  max-width: 250px;
+}
+
+#btn {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+   /* width: 100%; */
+} 
+
+/* 📱 Mobile screens */
+@media (max-width: 480px) {
+  .btn-group {
+    margin-top: 85px;  /* 👈 mobile pe extra gap
+    max-width: 100%;   full width on mobile */
+  }
+
+  #btn {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+}
+
+
+
+
+
+/* .btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+  width: 100%;
+  max-width: 250px; /* center width */
+
+
+
+    /* Popup background (overlay) */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none; /* hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup box */
+.popup {
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: crimson;
+}
+
+.popup p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.popup button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: crimson;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.popup button:hover {
+  background: darkred;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+  @media (max-width: 480px) {
+  .popup {
+    max-width: 300px;
+    padding: 15px;
+  }
+
+  .popup h2 {
+    font-size: 1.2rem;
+  }
+
+  .popup p {
+    font-size: 1rem;
+  }
+
+  .popup button {
+    font-size: 0.9rem;
+    padding: 8px 14px;
+  }
+}
+
+/* 💻 Tablets */
+@media (max-width: 768px) {
+  .popup {
+    max-width: 350px;
+  }
+}
+
+.btn-gruop {
+    margin-top: 40px;  /* 👈 mobile pe extra gap */
+    width: 95%;
+  }
+
+  .status {
+    margin-top: 50px;  /* 👈 mobile pe extra gap */
+    width: 100%;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* Overlay background */
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup box */
+.popupBox {
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.popupBox h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: crimson;
+}
+
+.popupBox p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Popup buttons */
+.popupBtn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 5px;
+  transition: 0.2s;
+}
+
+/* Close button */
+.closeBtn {
+  background: gray;
+  color: white;
+}
+
+.closeBtn:hover {
+  background: dimgray;
+}
+
+/* Play again button */
+.playBtn {
+  background: crimson;
+  color: white;
+}
+
+.playBtn:hover {
+  background: darkred;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* 📱 Mobile screens */
+@media (max-width: 480px) {
+  .popupBox {
+    max-width: 95%;
+    max-height: 80vh;
+    padding: 15px;
+  }
+
+  .popupBox h2 {
+    font-size: 1.3rem;
+  }
+
+  .popupBox p {
+    font-size: 1rem;
+  }
+
+  .popupBtn {
+    font-size: 0.9rem;
+    padding: 8px 14px;
+  }
+}
+
+
+
+
+
+
+/* Wrong Popup Overlay */
+.wrong-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Wrong Popup Box */
+.wrong-popup-box {
+  background: #fff3f3;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 350px;
+  width: 90%;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+  animation: wrongPopupScale 0.3s ease-in-out;
+}
+
+.wrong-popup-box h2 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  color: #d90429;
+}
+
+.wrong-popup-box p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+.wrong-popup-btn {
+  padding: 10px 20px;
+  background: #ef233c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.wrong-popup-btn:hover {
+  background: #d90429;
+}
+
+/* Animation */
+@keyframes wrongPopupScale {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+

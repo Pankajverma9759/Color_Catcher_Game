@@ -1,26 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colour Catcher Game</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colour Catcher Game</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div id="mode"> </div>
-      
-    <div class="game-container">
-        <h1>🎯Colour Catcher Game</h1>
-        <p>Click on : <span id="target-color">#</span></p>
-        <div id="grid" class="color-grid"></div>
-        <p>⌚Time Left:<span id="time">30</span>Sec</p>
-        <p>🏆Score:<span id="score">0</span></p>
-        <button onclick="startGame()">Start Game</button>
+<body class="light-mode">  <!-- default light mode -->
 
+  <div id="mode"> 
+    <button id="dark" onclick="setDarkMode()">Dark Mode</button>
+    <button id="light" onclick="setLightMode()">Light Mode</button>
+  </div>
+        
+  <div class="game-container">
+    <h1>🎯 Colour Catcher Game</h1>
+    <p>Click on : <span id="target-color">#</span></p>
+    <div id="grid" class="color-grid"></div>
+    <!-- <p>⌚ Time Left: <span id="time">30</span> Sec</p> -->
+    <!-- <p>🏆 Score: <span id="score">0</span></p> -->
+    <!-- Popup -->
+   <div id="popup-overlay" class="popup-overlay">
+        <div class="popup">
+            <h2>⏳ Time’s Up!</h2>
+            <p>Your Score: <span id="score">0</span></p>
+            <button onclick="closePopup()">Close</button>
+         </div>
     </div>
 
 
+    <!-- Cancel Popup -->
+<div id="cancelPopupOverlay" class="popupOverlay">
+  <div class="popupBox">
+    <h2>❌ Game Cancelled</h2>
+    <p>Your progress has been stopped.</p>
+    <button class="popupBtn closeBtn" onclick="closeCancelPopup()">Close</button>
+    <button class="popupBtn playBtn" onclick="playAgain()">Play Again</button>
+  </div>
+</div>
 
-    <script src="index.js"></script>
+
+<!-- Wrong Selection Popup -->
+<div id="wrongPopup" class="wrong-popup-overlay">
+  <div class="wrong-popup-box">
+    <h2>⚠️ Wrong Color!</h2>
+    <p>Oops, you clicked the wrong color. Try again!</p>
+    <button class="wrong-popup-btn" onclick="closeWrongPopup()">OK</button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+    
+    <div class="status">
+        <p>⌚ Time Left: <span id="time">30</span> Sec</p>
+    </div>
+
+   <div class="btn-gruop">
+       <button id="btn" onclick="startGame()">Start Game</button>
+       <button onclick="cancelGame()" id="btn">Cancel Game</button>
+   </div>
+  </div>
+
+  <script src="index.js"></script>
 </body>
 </html>
